@@ -1,0 +1,9 @@
+/.classpath
+/.project
+/.settings
+/target
+/eclipse-classes
+/app-module/target
+/app-module/.classpath
+/app-module/.project
+/app-module/.settings
