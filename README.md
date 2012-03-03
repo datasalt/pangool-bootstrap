@@ -1,7 +1,7 @@
 # Pangool Bootstrap
 
 This project contains an example project that can be used to start
-to develop [Pangool][pangool.net] applications
+to develop [Pangool](http://pangool.net) applications
 
 ## Compiling
 '''
