@@ -59,12 +59,7 @@ public class SortJob implements Tool, Configurable {
   }
 	
 	public static Schema getSchema() {
-		try {
-			return new Schema("line", Fields.parse("line:string"));
-			
-    } catch(TupleMRException e) {
-    	throw new RuntimeException(e);
-    }
+		return new Schema("line", Fields.parse("line:string"));
 	}
 		
 	@SuppressWarnings("serial")
