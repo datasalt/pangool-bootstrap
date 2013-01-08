@@ -21,7 +21,7 @@
   <parent>
     <groupId>com.datasalt.pangool</groupId>
     <artifactId>pangool-bootstrap-top-level</artifactId>
-    <version>0.43.5</version>
+    <version>0.50.1</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
 
@@ -89,7 +89,7 @@
     <dependency>
     	<groupId>com.datasalt.pangool</groupId>
     	<artifactId>pangool-core</artifactId>
-    	<version>0.43.5</version>
+    	<version>0.50.1</version>
     </dependency>
     
     <!-- The Hadoop depency. Select here your version -->
