@@ -23,7 +23,7 @@ mvn exec:java -Dexec.mainClass="com.datasalt.pangool.bootstrap.Driver" -Dexec.ar
 ```
 mvn install
 cd app-module/target
-hadoop jar pangool-bootstrap-0.40-job.jar sort ../pom.xml pomout
+hadoop jar pangool-bootstrap-*-job.jar sort ../pom.xml pomout
 ```
 
 (This is currently not working in local mode because of Jackson version incompatibility
