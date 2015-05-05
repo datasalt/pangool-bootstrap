@@ -24,7 +24,7 @@
   
   <groupId>com.datasalt.pangool</groupId>
   <artifactId>pangool-bootstrap-top-level</artifactId>
-  <version>0.50.1</version>
+  <version>0.70</version>
   <packaging>pom</packaging>
 
   <name>Pangool Bootstrap</name>

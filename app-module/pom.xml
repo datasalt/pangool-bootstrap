@@ -14,101 +14,126 @@
   See the License for the specific language governing permissions and
   limitations under the License.
  -->
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <modelVersion>4.0.0</modelVersion>
+<project
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+        xmlns="http://maven.apache.org/POM/4.0.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <modelVersion>4.0.0</modelVersion>
 
-  <parent>
-    <groupId>com.datasalt.pangool</groupId>
-    <artifactId>pangool-bootstrap-top-level</artifactId>
-    <version>0.50.1</version>
-    <relativePath>../pom.xml</relativePath>
-  </parent>
+    <parent>
+        <groupId>com.datasalt.pangool</groupId>
+        <artifactId>pangool-bootstrap-top-level</artifactId>
+        <version>0.70</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
 
-  <artifactId>pangool-bootstrap</artifactId>
-  <packaging>jar</packaging>
-  <name>Pangool Bootstrap Module</name>
-  <description>Start up module for developing with Pangool</description>
- <licenses>
-    <license>
-      <name>The Apache Software License, Version 2.0</name>
-      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-      <distribution>repo</distribution>
-    </license>
-  </licenses>
+    <artifactId>pangool-bootstrap</artifactId>
+    <packaging>jar</packaging>
+    <name>Pangool Bootstrap Module</name>
+    <description>Start up module for developing with Pangool</description>
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <hadoop.version>2.2.0</hadoop.version>
+    </properties>
 
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-          <encoding>UTF-8</encoding>
-          <source>1.6</source>
-          <target>1.6</target>
-          <optimize>true</optimize>
-        </configuration>
-      </plugin>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                    <optimize>true</optimize>
+                </configuration>
+            </plugin>
 
-      <!-- create pangool job jar -->
-	  <plugin>
-	    <artifactId>maven-assembly-plugin</artifactId>
-	    <version>2.2.1</version>
-	    <configuration>
-		<descriptors>
-		  <descriptor>src/main/assembly/hadoop-job.xml</descriptor>
-		</descriptors>
-		<archive>
-		  <manifest>
-		    <mainClass>com.datasalt.pangool.bootstrap.Driver</mainClass>
-	          </manifest>
-		</archive>
-	    </configuration>
-	    <executions>
-		<execution>
-       		 <id>make-assembly</id>
-			<phase>package</phase>
-  			<goals>
-  		          <goal>single</goal>
-			</goals>
-		</execution>
-	</executions>
-	</plugin>
-		
-      	
-   </plugins>
-  </build>
-    
-  <dependencies>
+            <!-- create pangool job jar -->
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>2.2.1</version>
+                <configuration>
+                    <descriptors>
+                        <descriptor>src/main/assembly/hadoop-job.xml</descriptor>
+                    </descriptors>
+                    <archive>
+                        <manifest>
+                            <mainClass>com.datasalt.pangool.bootstrap.Driver</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
 
-    <!-- Pangool modules -->
-    <dependency>
-    	<groupId>com.datasalt.pangool</groupId>
-    	<artifactId>pangool-core</artifactId>
-    	<version>0.60.3</version>
-    </dependency>
-    
-    <!-- The Hadoop depency. Select here your version -->
-    <dependency>
-   	<groupId>org.apache.hadoop</groupId>
-	<artifactId>hadoop-core</artifactId>
-	<version>0.20.2</version>
-	<scope>provided</scope>
-    </dependency>
-    
-        
-    <!-- Test dependencies -->
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.8.2</version>
-      <scope>test</scope>
-    </dependency>
-            
- </dependencies>
+
+        </plugins>
+    </build>
+
+    <dependencies>
+
+        <!-- Pangool modules -->
+        <dependency>
+            <groupId>com.datasalt.pangool</groupId>
+            <artifactId>pangool-core</artifactId>
+            <version>0.70</version>
+            <classifier>mr2</classifier>
+        </dependency>
+
+        <!-- The Hadoop dependency. Select here your version -->
+        <dependency>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-mapreduce-client-core</artifactId>
+            <version>${hadoop.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-mapreduce-client-jobclient</artifactId>
+            <version>${hadoop.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-common</artifactId>
+            <version>${hadoop.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-hdfs</artifactId>
+            <version>${hadoop.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+
+        <!-- Test dependencies -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.8.2</version>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
 
 </project>
